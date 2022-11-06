@@ -20,18 +20,15 @@ try {
 // WISTIA PLAYER STYLING
 let el = document.getElementsByClassName('wistia_responsive_padding')[0];
 let elPaddingTop = window.getComputedStyle(el, null).getPropertyValue('padding-top');
-
-console.log(el.offsetHeight)
-
 let newPadding = parseInt(elPaddingTop, 10) / 2;
-if(newPadding > 337.5){
-    newPadding = 337.5;
+
+if(newPadding > 281.25){
+    newPadding = 281.25;
 }
 
 el.style.padding = newPadding + "px 0 0 0";
 
 let headerWhite = document.getElementsByClassName('header-white')[0].style.marginTop = newPadding+20 + 'px';
-console.log(newPadding)
 
 
 // CAROUSEL CODE -----------------
@@ -274,7 +271,7 @@ form.addEventListener('submit', function(event) {
   document.getElementsByClassName('overlay-finish')[0].style.display = 'none';
   document.getElementById('loading').style.display = 'flex';
 
-  setTimeout(submitForm, 500000);
+  setTimeout(submitForm, 1000);
   let formSubmitted = false;
 
   function submitForm() {
