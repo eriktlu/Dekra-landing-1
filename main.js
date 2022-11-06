@@ -1,13 +1,25 @@
+// PASSIVE SUPPORT TEST
+let passiveSupported = false;
+
+try {
+  const options = {
+    get passive() { // This function will be called when the browser
+                    //   attempts to access the passive property.
+      passiveSupported = true;
+      return false;
+    }
+  };
+
+  window.addEventListener("test", null, options);
+  window.removeEventListener("test", null, options);
+} catch (err) {
+  passiveSupported = false;
+}
+
+
+// WISTIA PLAYER STYLING
 let el = document.getElementsByClassName('wistia_responsive_padding')[0];
 let elPaddingTop = window.getComputedStyle(el, null).getPropertyValue('padding-top');
-
-
-
-// window.addEventListener('load', (event) => {
-//     let x = document.getElementsByClassName('w-bpb-wrapper')[0]
-//     console.log(x)
-//     x.style.marginTop = Math.abs(parseInt(x.style.marginTop, 10)) + 'px'
-// });
 
 console.log(el.offsetHeight)
 
@@ -22,8 +34,7 @@ let headerWhite = document.getElementsByClassName('header-white')[0].style.margi
 console.log(newPadding)
 
 
-// Carousel code -----------------
-
+// CAROUSEL CODE -----------------
 var previousButton, nextButton;
 var slidesContainer, slides;
 var leftMostSlideIndex = 0;
@@ -31,7 +42,6 @@ var slideGap = 20;
 var z = 0
 var xDown = null;                                                        
 var yDown = null;
-
 const windowSize = window.matchMedia("(max-width: 991px)");
 
 window.addEventListener('DOMContentLoaded', function(e) {
@@ -45,8 +55,8 @@ window.addEventListener('DOMContentLoaded', function(e) {
     nextButton.addEventListener('click', nextSlide);
 
     /*Swipe Control*/
-    slidesContainer.addEventListener('touchstart', handleTouchStart, false);        
-    slidesContainer.addEventListener('touchmove', handleTouchMove, false);
+    slidesContainer.addEventListener('touchstart', handleTouchStart, passiveSupported ? { passive: true } : false);        
+    slidesContainer.addEventListener('touchmove', handleTouchMove, passiveSupported ? { passive: true } : false);
 
 });
 
@@ -124,10 +134,6 @@ function handleTouchMove(evt) {
 
 // Carousel code end -----------------
 
-// Reload page on resize
-// This is due to the wistia video player
-
-// window.onresize = function(){ location.reload(); }
 
 // Overlay
 
@@ -198,13 +204,11 @@ function nextPage() {
         progressBar[leftMostFormIndex].style.backgroundColor = 'var(--clr-secondary-1000)'
         goToPage(leftMostFormIndex + 1);
     } else {
-        console.log('return')
         return;
     }
 }
 
 function goToPage(nextLeftMostFormIndex) {
-    console.log('gotopage');
     // Scroll to the requested slide
     formContainer.style.left = '-' + (formPage[0].offsetWidth + pageGap) *  nextLeftMostFormIndex + 'px';
 
@@ -260,6 +264,7 @@ function checkFields(currentPage) {
 }
 
 
+// FORM SUBMIT
 const form = document.getElementById('course-signup')
 const id = (new Date()).getTime().toString(36) + Math.random().toString(36).slice(2)
 
@@ -275,9 +280,7 @@ form.addEventListener('submit', function(event) {
   function submitForm() {
     if (!formSubmitted) {
         formSubmitted = true;
-        sendWebhook();
-        // form.submit();
-        
+        sendWebhook();    
     }
   }
 
@@ -288,6 +291,8 @@ form.addEventListener('submit', function(event) {
   })
 })
 
+
+// SEND WEBHOOK
 function sendWebhook() {
     fetch('https://webhook.site/3bef1258-5c53-4159-91bd-ca6659b78fe5', {
         method: 'POST',
@@ -310,36 +315,4 @@ function sendWebhook() {
         console.error('Error:', error);
         window.location.href = 'confirmation.html';
     });
-
-    // var http = new XMLHttpRequest();
-    // var url = 'https://webhook.site/3bef1258-5c53-4159-91bd-ca6659b78fe5';
-    // var content = {
-    //     'first_name': document.getElementById('firstName').value,
-    //     'phone': document.getElementById('mobNumber').value
-    // }
-
-    // http.open('POST', url, true);
-    // http.setRequestHeader('Content-type', 'application/json');
-    // http.onreadystatechange = function() {
-    //     if(http.readyState == 4 && http.status == 200) {
-    //         alert(http.responseText);
-    //     }
-    // }
-    // http.send(JSON.stringify(content));
-
 }
-
-
-// const getButton = document.getElementById('btn');
-//     const getFirstName = document.getElementById('first_name');
-//     const getEmail = document.getElementById('email');
-//     fetch('https://hooks.zapier.com/hooks/catch/12195186/bzjhk97/', {
-//       method: 'POST',
-//       body: new URLSearchParams({
-//         first_name: getFirstName.value,
-//         email: email.value
-//       })
-//     })
-//     .then(response => {
-        
-//     });
