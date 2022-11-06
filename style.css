@@ -161,6 +161,8 @@ input:focus-visible, textarea:focus-visible {
 
 .bg-secondary-logo {
     position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
     left: 0;
     z-index: -1;
     max-height: 210px;
