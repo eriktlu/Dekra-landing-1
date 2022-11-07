@@ -883,7 +883,12 @@ header .w-vulcan-overlays-table {
 /* Education Information */
 
 .education-oppurtunities {
-    background: url('https://dekra-sjaelland.dk/media/7703/truck-driver-occupation-service-1.png');
+    background-image: none;
+    background-color: var(--clr-secondary-100);
+}
+
+#educationImage {
+    background-image: url('https://dekra-sjaelland.dk/media/7703/truck-driver-occupation-service-1.png');
     height: 528px;
     width: 100%;
     background-position: right top;
