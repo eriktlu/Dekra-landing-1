@@ -882,7 +882,7 @@ header .w-vulcan-overlays-table {
 
 /* Education Information */
 
-.education-oppurtunities {
+#educationImage.lazy {
     background-image: none;
     background-color: var(--clr-secondary-100);
 }
