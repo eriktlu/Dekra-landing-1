@@ -349,7 +349,7 @@ function sendWebhook() {
             queryString: window.location.q,
             landingPage: window.location.href,
             leadForm: 'version 0',
-            name: document.getElementById('firstName').value + ' ' + document.getElementById('firstName').value,
+            name: document.getElementById('firstName').value + ' ' + document.getElementById('lastName').value,
             phone: document.getElementById('mobNumber').value,
             current_job_situation: document.querySelector('input[name="currentJob"]:checked').value,
             do_you_want_the_education: document.querySelector('input[name="considerTraining"]:checked').value,
