@@ -139,7 +139,7 @@ textarea {
     color: var(--clr-secondary-1200);
 }
 
-input:focus, textarea:focus {
+input:focus, textarea:focus, label:focus {
     outline: 2px solid var(--clr-secondary-1000);
     transition: none;
 }
@@ -1021,6 +1021,13 @@ footer {
     overflow-x: hidden;
     position: relative;
     max-height: 100vh;
+    scrollbar-width: none;
+    -ms-overflow-style: none; 
+}
+
+.overlay-form::-webkit-scrollbar {
+    width: 0;
+    height: 0;
 }
 
 .form-container {

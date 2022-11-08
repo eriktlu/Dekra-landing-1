@@ -311,6 +311,17 @@ function checkFields(currentPage) {
     }
 }
 
+// BLOCK TABBING TO NEXT STAGE ON FORM
+
+window.addEventListener('DOMContentLoaded', function(e) {
+    blockTabbing = this.document.querySelectorAll('.block-tab');
+
+    blockTabbing.forEach(el => el.addEventListener('keydown', event => {
+        console.log('testtt');
+        if (event.keyCode == 9) event.preventDefault(); 
+    }));
+});
+
 
 // FORM SUBMIT
 const form = document.getElementById('course-signup')

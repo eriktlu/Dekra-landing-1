@@ -343,7 +343,7 @@
                     <div class="form-page flex flex-column flex-align-center" id="formPage1">
                         <h2 class="form-title align-center semi">Bliv ringet op</h2>
                         <p class="description form-description align-center mw-200">Besvar 7 hurtige spørgsmål herunder, og bliv ringet op til en uforpligtende samtale med en af vores uddannelses-konsulenter, for at se om uddannelsen til lastbilchauffør er noget for dig.</p>
-                        <button type="button" class="btn semi overlay-next">Jeg vil gerne høre mere om uddannelsen</button>
+                        <button type="button" class="btn semi overlay-next block-tab" tabindex="1">Jeg vil gerne høre mere om uddannelsen</button>
                         <div class="form-note section-block">
                             <p class="description align-center mw-100">*Vi oplever mange henvendelser, og har få pladser på holdene, så sorg for at besvare sporgsmälene sà godt som muligt.</p>
                         </div>
@@ -353,7 +353,7 @@
                         <h2 class="form-title align-center semi">Hvad er dit navn</h2>
                         <div class="flex flex-column form-fields">
                             <input type="text" placeholder="Fornavn" class="form-text" name="firstName" id="firstName" required tabindex="-1">
-                            <input type="text" placeholder="Efternavn" class="form-text" name="lastName" id="lastName" required tabindex="-1">
+                            <input type="text" placeholder="Efternavn" class="form-text block-tab" name="lastName" id="lastName" required tabindex="-1">
                         </div>
                         <div class="form-error">
                             <p class="error desc-300">Fill all the fields!</p>
@@ -373,8 +373,8 @@
                             <p class="error desc-300">Fill all the fields!</p>
                         </div>
                         <div class="flex flex-justify-between overlay-controls">
-                            <button type="button" class="btn semi overlay-previous">Tilbage</button>
-                            <button type="button" class="btn semi check">Yderligere</button>
+                            <button type="button" class="btn semi overlay-previous" tabindex="0">Tilbage</button>
+                            <button type="button" class="btn semi check block-tab" tabindex="0">Yderligere</button>
                         </div>
                     </div>
 
@@ -382,18 +382,18 @@
                         <h2 class="form-title align-center semi">Hvad er din nuverende jobsituation?</h2>
                         <div class="flex flex-column form-fields">
                             <input type="radio" name="currentJob" id="currentJob1" value="Jeg er ledig" class="form-radio-full visually-hidden" required tabindex="-1">
-                            <label for="currentJob1" class="form-radio-full-label">Jeg er ledig</label>
+                            <label for="currentJob1" class="form-radio-full-label" tabindex="0">Jeg er ledig</label>
                             <input type="radio" name="currentJob" id="currentJob2" value="Jeg overvejer at lave et branche-skitte og søger nye udfordringer" class="form-radio-full visually-hidden" tabindex="-1">
-                            <label for="currentJob2" class="form-radio-full-label">Jeg overvejer at lave et branche-skitte og søger nye udfordringer</label>
+                            <label for="currentJob2" class="form-radio-full-label" tabindex="0">Jeg overvejer at lave et branche-skitte og søger nye udfordringer</label>
                             <input type="radio" name="currentJob" id="currentJob3" value="Andet" class="form-radio-full visually-hidden" tabindex="-1">
-                            <label for="currentJob3" class="form-radio-full-label">Andet</label>
+                            <label for="currentJob3" class="form-radio-full-label" tabindex="0">Andet</label>
                         </div>
                         <div class="form-error">
                             <p class="error desc-300">Fill all the fields!</p>
                         </div>
                         <div class="flex flex-justify-between overlay-controls">
-                            <button type="button" class="btn semi overlay-previous">Tilbage</button>
-                            <button type="button" class="btn semi check">Yderligere</button>
+                            <button type="button" class="btn semi overlay-previous" tabindex="0">Tilbage</button>
+                            <button type="button" class="btn semi check block-tab" tabindex="0">Yderligere</button>
                         </div>
                     </div>
 
@@ -402,26 +402,26 @@
                         <div class="flex flex-column form-fields">
                             <label for="considerTraining1" class="form-radio flex flex-align-center">
                                 <input type="radio" name="considerTraining" id="considerTraining1" value="Ja" required tabindex="-1">
-                                <label for="considerTraining1">Ja</label>
+                                <label for="considerTraining1" tabindex="0">Ja</label>
                             </label>
                             <label for="considerTraining2" class="form-radio flex flex-align-center">
                                 <input type="radio" name="considerTraining" id="considerTraining2" value="Nej" tabindex="-1">
-                                <label for="considerTraining2">Nej</label>
+                                <label for="considerTraining2" tabindex="0">Nej</label>
                             </label>
                         </div>
                         <div class="form-error">
                             <p class="error desc-300">Fill all the fields!</p>
                         </div>
                         <div class="flex flex-justify-between overlay-controls">
-                            <button type="button" class="btn semi overlay-previous">Tilbage</button>
-                            <button type="button" class="btn semi check">Yderligere</button>
+                            <button type="button" class="btn semi overlay-previous" tabindex="0">Tilbage</button>
+                            <button type="button" class="btn semi check block-tab" tabindex="0">Yderligere</button>
                         </div>
                     </div>
 
                     <div class="form-page flex flex-column flex-align-center" id="formPage6" tabindex="-1">
                         <h2 class="form-title align-center semi">Hvorfor overvejer du at blive lastbilchaffor, og hvorfor lige nu?</h2>
                         <div class="flex flex-column form-fields">
-                            <textarea name="why" id="why" cols="30" rows="10" placeholder="Skriv dit svar" required tabindex="-1"></textarea>
+                            <textarea name="why" id="why" cols="30" rows="10" placeholder="Skriv dit svar" required tabindex="-1" class="block-tab"></textarea>
                         </div>
                         <div class="form-error">
                             <p class="error desc-300">Fill all the fields!</p>
