@@ -367,10 +367,10 @@
                         <h2 class="form-title align-center semi">Hvad er dit mobilnummer?</h2>
                         <p class="description form-description-200 align-center mw-200">Skriv det telefonnummer som vi nemmest kan komme i kontakt med dig pá?</p>
                         <div class="flex flex-column form-fields">
-                            <input type="tel" placeholder="Mobilnummer" class="form-text" name="mobNumber" id="mobNumber" required tabindex="-1">
+                            <input type="tel" placeholder="Mobilnummer" class="form-text" name="mobNumber" id="mobNumber" required pattern="[0-9]{8}" tabindex="-1">
                         </div>
                         <div class="form-error">
-                            <p class="error desc-300">Fill all the fields!</p>
+                            <p class="error desc-300">Add number in a correct format!</p>
                         </div>
                         <div class="flex flex-justify-between overlay-controls">
                             <button type="button" class="btn semi overlay-previous" tabindex="0">Tilbage</button>
