@@ -290,9 +290,10 @@ function checkFields(currentPage) {
             allAreFilled = radioValueCheck;
             return;
         } else if(i.type === 'tel'){
-            console.log(i.value)
+            danishNumberRegex = new RegExp(/^(?:(?:00|\+)?45)?(?=2|3[01]|4[012]|4911|5[0-3]|6[01]|[78]1|9[123])\d{8}$/)
+            console.log(danishNumberRegex.source);
             if(i.value.match(/\d/g)){
-                if(i.value.match(/\d/g).length===8) {
+                if(danishNumberRegex.test(i.value)) {
                     allAreFilled = true;
                 } else {
                     allAreFilled = false; 
