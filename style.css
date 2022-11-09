@@ -464,7 +464,7 @@ h1, h2, h3, h4, h5, h6 {
     }
 }
 
-.btn:hover {
+.btn:hover, .btn:focus {
     background-color: var(--clr-secondary-900);
 }
 
@@ -1069,7 +1069,7 @@ footer {
     transition: .15s ease-in-out;
 }
 
-.overlay-previous:hover {
+.overlay-previous:hover, .overlay-previous:focus {
     background-color: var(--clr-secondary-1100);
 }
 
@@ -1078,7 +1078,7 @@ footer {
     transition: .15s ease-in-out;
 }
 
-.overlay-finish:hover {
+.overlay-finish:hover, .overlay-finish:focus {
     background-color: var(--clr-secondary-1300);
 }
 
