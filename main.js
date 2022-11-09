@@ -1,3 +1,5 @@
+
+window.onload = function() {
 // PASSIVE SUPPORT TEST
 let passiveSupported = false;
 
@@ -32,55 +34,53 @@ let headerWhite = document.getElementsByClassName('header-white')[0].style.margi
 
 
 // LAZY LOAD CSS IMAGES
+var lazyloadImages;    
 
-document.addEventListener("DOMContentLoaded", function() {
-    var lazyloadImages;    
-  
-    if ("IntersectionObserver" in window) {
-      lazyloadImages = document.querySelectorAll(".lazy");
-      var imageObserver = new IntersectionObserver(function(entries, observer) {
-        entries.forEach(function(entry) {
-          if (entry.isIntersecting) {
-            var image = entry.target;
-            image.classList.remove("lazy");
-            imageObserver.unobserve(image);
-          }
+if ("IntersectionObserver" in window) {
+    lazyloadImages = document.querySelectorAll(".lazy");
+    var imageObserver = new IntersectionObserver(function(entries, observer) {
+    entries.forEach(function(entry) {
+        if (entry.isIntersecting) {
+        var image = entry.target;
+        image.classList.remove("lazy");
+        imageObserver.unobserve(image);
+        }
+    });
+    });
+
+    lazyloadImages.forEach(function(image) {
+    imageObserver.observe(image);
+    });
+} else {  
+    var lazyloadThrottleTimeout;
+    lazyloadImages = document.querySelectorAll(".lazy");
+    
+    function lazyload () {
+    if(lazyloadThrottleTimeout) {
+        clearTimeout(lazyloadThrottleTimeout);
+    }    
+
+    lazyloadThrottleTimeout = setTimeout(function() {
+        var scrollTop = window.pageYOffset;
+        lazyloadImages.forEach(function(img) {
+            if(img.offsetTop < (window.innerHeight + scrollTop)) {
+            img.src = img.dataset.src;
+            img.classList.remove('lazy');
+            }
         });
-      });
-  
-      lazyloadImages.forEach(function(image) {
-        imageObserver.observe(image);
-      });
-    } else {  
-      var lazyloadThrottleTimeout;
-      lazyloadImages = document.querySelectorAll(".lazy");
-      
-      function lazyload () {
-        if(lazyloadThrottleTimeout) {
-          clearTimeout(lazyloadThrottleTimeout);
-        }    
-  
-        lazyloadThrottleTimeout = setTimeout(function() {
-          var scrollTop = window.pageYOffset;
-          lazyloadImages.forEach(function(img) {
-              if(img.offsetTop < (window.innerHeight + scrollTop)) {
-                img.src = img.dataset.src;
-                img.classList.remove('lazy');
-              }
-          });
-          if(lazyloadImages.length == 0) { 
-            document.removeEventListener("scroll", lazyload);
-            window.removeEventListener("resize", lazyload);
-            window.removeEventListener("orientationChange", lazyload);
-          }
-        }, 20);
-      }
-  
-      document.addEventListener("scroll", lazyload);
-      window.addEventListener("resize", lazyload);
-      window.addEventListener("orientationChange", lazyload);
+        if(lazyloadImages.length == 0) { 
+        document.removeEventListener("scroll", lazyload);
+        window.removeEventListener("resize", lazyload);
+        window.removeEventListener("orientationChange", lazyload);
+        }
+    }, 20);
     }
-  })
+
+    document.addEventListener("scroll", lazyload);
+    window.addEventListener("resize", lazyload);
+    window.addEventListener("orientationChange", lazyload);
+}
+
 
 // CAROUSEL CODE -----------------
 var previousButton, nextButton;
@@ -92,21 +92,18 @@ var xDown = null;
 var yDown = null;
 const windowSize = window.matchMedia("(max-width: 991px)");
 
-window.addEventListener('DOMContentLoaded', function(e) {
-    previousButton = document.querySelector('.previous');
-    nextButton = document.querySelector('.next');
-    slidesContainer = document.querySelector('.slides');
-    slides = slidesContainer.querySelectorAll('.slide');
+previousButton = document.querySelector('.previous');
+nextButton = document.querySelector('.next');
+slidesContainer = document.querySelector('.slides');
+slides = slidesContainer.querySelectorAll('.slide');
 
-    // Set up previous/next button behaviors
-    previousButton.addEventListener('click', previousSlide);
-    nextButton.addEventListener('click', nextSlide);
+// Set up previous/next button behaviors
+previousButton.addEventListener('click', previousSlide);
+nextButton.addEventListener('click', nextSlide);
 
-    /*Swipe Control*/
-    slidesContainer.addEventListener('touchstart', handleTouchStart, passiveSupported ? { passive: true } : false);        
-    slidesContainer.addEventListener('touchmove', handleTouchMove, passiveSupported ? { passive: true } : false);
-
-});
+/*Swipe Control*/
+slidesContainer.addEventListener('touchstart', handleTouchStart, passiveSupported ? { passive: true } : false);        
+slidesContainer.addEventListener('touchmove', handleTouchMove, passiveSupported ? { passive: true } : false);
 
 /** Go to previous slide */
 function previousSlide() {
@@ -216,24 +213,23 @@ var errorBox;
 var leftMostFormIndex = 0;
 var pageGap = 50;
 
-window.addEventListener('DOMContentLoaded', function(e) {
-    nextButton = document.querySelectorAll('.overlay-next');
-    previousButton = document.querySelectorAll('.overlay-previous');
-    formContainer = document.querySelector('.form-container');
-    formPage = formContainer.querySelectorAll('.form-page');
-    progressBar = this.document.querySelectorAll('.progress-bar');
-    errorBox = this.document.querySelectorAll('.error');
+nextButton = document.querySelectorAll('.overlay-next');
+previousButton = document.querySelectorAll('.overlay-previous');
+formContainer = document.querySelector('.form-container');
+formPage = formContainer.querySelectorAll('.form-page');
+progressBar = this.document.querySelectorAll('.progress-bar');
+errorBox = this.document.querySelectorAll('.error');
 
 
-    // Set up previous/next button behaviors
-    nextButton.forEach(el => el.addEventListener('click', event => {
-        nextPage();
-    }));
+// Set up previous/next button behaviors
+nextButton.forEach(el => el.addEventListener('click', event => {
+    nextPage();
+}));
 
-    previousButton.forEach(el => el.addEventListener('click', event => {
-        previousPage();
-    }));
-});
+previousButton.forEach(el => el.addEventListener('click', event => {
+    previousPage();
+}));
+
 
 function previousPage() {
     if(leftMostFormIndex > 1) {
@@ -274,15 +270,13 @@ function goToPage(nextLeftMostFormIndex) {
     leftMostFormIndex = nextLeftMostFormIndex;
 }
 
-window.addEventListener('DOMContentLoaded', function(e) {
-    var nextButtons = document.querySelectorAll('.check');
+var nextButtons = document.querySelectorAll('.check');
 
-    for(let i = 0; i < nextButtons.length; i++){
-        nextButtons[i].onclick = function() {
-            checkFields(leftMostFormIndex)
-        }
+for(let i = 0; i < nextButtons.length; i++){
+    nextButtons[i].onclick = function() {
+        checkFields(leftMostFormIndex)
     }
-});
+}
 
 function checkFields(currentPage) {
     let allAreFilled = true;
@@ -294,6 +288,18 @@ function checkFields(currentPage) {
                 if (r.checked) radioValueCheck = true;
             })
             allAreFilled = radioValueCheck;
+            return;
+        } else if(i.type === 'tel'){
+            console.log(i.value)
+            if(i.value.match(/\d/g)){
+                if(i.value.match(/\d/g).length===8) {
+                    allAreFilled = true;
+                } else {
+                    allAreFilled = false; 
+                }
+            } else {
+                allAreFilled = false; 
+            }
             return;
         }
         if (!i.value) { 
@@ -313,15 +319,12 @@ function checkFields(currentPage) {
 
 // BLOCK TABBING TO NEXT STAGE ON FORM
 
-window.addEventListener('DOMContentLoaded', function(e) {
-    blockTabbing = this.document.querySelectorAll('.block-tab');
+blockTabbing = this.document.querySelectorAll('.block-tab');
 
-    blockTabbing.forEach(el => el.addEventListener('keydown', event => {
-        console.log('testtt');
-        if (event.keyCode == 9) event.preventDefault(); 
-    }));
-});
-
+blockTabbing.forEach(el => el.addEventListener('keydown', event => {
+    console.log('testtt');
+    if (event.keyCode == 9) event.preventDefault(); 
+}));
 
 // FORM SUBMIT
 const form = document.getElementById('course-signup')
@@ -373,4 +376,5 @@ function sendWebhook() {
     .catch(error => {
         console.error('Error:', error);
     });
+}
 }
